@@ -6,6 +6,10 @@ target 'Snap-Chat' do
   use_frameworks!
 
   # Pods for Snap-Chat
-    pod "Firebase/Core"
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Database'
+  pod 'SDWebImage', '~>3.8'
 
 end
