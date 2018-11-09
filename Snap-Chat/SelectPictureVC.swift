@@ -16,7 +16,7 @@ class SelectPictureVC: UIViewController, UITextFieldDelegate, UIImagePickerContr
     
     var imagePicker : UIImagePickerController?
     var imageAdded = false
-    var imageName = "\(NSUUID().uuidString).jpg"
+    var imageName = "\(NSUUID().uuidString).jpg"  // unique string name generator
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,21 +52,30 @@ class SelectPictureVC: UIViewController, UITextFieldDelegate, UIImagePickerContr
     
     @IBAction func chooseRecipientPressed(_ sender: Any) {
         if let message = messageTextField.text {
-            if imageAdded && message != "" {
-                // Upload the image
+            if imageAdded && message != "" {  // Upload the image, when both image and text are ready
+                
+                // storage folder
                 let imagesFolder = Storage.storage().reference().child("images")
+                // image converted to data
                 if let image = imageView.image {
                     if let imageData = UIImageJPEGRepresentation(image, 0.1) {
-//                        imagesFolder.child(imageName).put(imageData, metadata: nil, completion: { (metadata, error) in
-//                            if let error = error {
-//                                self.presentAlert(alert: error.localizedDescription)
-//                            } else {
-//                                // Segue to next view Controller
-//                                if let downloadURL = metadata?.downloadURL()?.absoluteString {
-//                                    self.performSegue(withIdentifier: "selectReciverSegue", sender: downloadURL)
-//                                }
-//                            }
-//                        })
+                        // actual upload
+                        imagesFolder.child(imageName).putData(imageData, metadata: nil) { (storageMetadata, error) in
+                            if let error1 = error {
+                                self.presentAlert(alert: error1.localizedDescription)
+                            } else {
+                                debugPrint("Image upload success!")
+                                // providing the downloadURL to prepare for segue function
+                                // check for names duplication ....
+                                imagesFolder.child(self.imageName).downloadURL(completion: { (url, err) in
+                                    if let error2 = error {
+                                        self.presentAlert(alert: error2.localizedDescription)
+                                    } else {
+                                        self.performSegue(withIdentifier: "selectRecipientSegue", sender: url!.absoluteString)
+                                    }
+                                })
+                            }
+                        }
                     }
                 }
             } else {
@@ -78,14 +87,15 @@ class SelectPictureVC: UIViewController, UITextFieldDelegate, UIImagePickerContr
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let downloadURL = sender as? String {
-//            if let selectVC = segue.destination as? SelectRecipientTableViewController {
-//                selectVC.downloadURL = downloadURL
-//                selectVC.snapDescription = messageTextField.text!
-//                selectVC.imageName = imageName
-//            }
+            if let selectVC = segue.destination as? SelectRecipientTableVC {
+                selectVC.downloadURL = downloadURL
+                selectVC.snapDescription = messageTextField.text!
+                selectVC.imageName = imageName
+            }
         }
     }
     
+    // message alerts
     func presentAlert(alert:String) {
         let alertVC = UIAlertController(title: "Error", message: alert, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in

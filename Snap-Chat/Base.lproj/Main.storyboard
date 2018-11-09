@@ -219,11 +219,55 @@
                     <connections>
                         <outlet property="imageView" destination="XGd-LT-4cm" id="sH0-eO-0bn"/>
                         <outlet property="messageTextField" destination="7vj-dc-jnt" id="PUh-Jk-Ojh"/>
+                        <segue destination="O3p-iE-8rh" kind="show" identifier="selectRecipientSegue" id="UFf-WV-lgB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bhu-Hb-7BW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1994" y="-90"/>
+        </scene>
+        <!--View SnapVC-->
+        <scene sceneID="kfg-DY-Daa">
+            <objects>
+                <viewController id="Qhl-Nc-0QV" customClass="ViewSnapVC" customModule="Snap_Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sbt-CV-jDw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="sAd-79-O4u"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N2y-dO-fMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1214" y="670"/>
+        </scene>
+        <!--Select Recipient TableVC-->
+        <scene sceneID="Gb6-IK-jyp">
+            <objects>
+                <tableViewController id="O3p-iE-8rh" customClass="SelectRecipientTableVC" customModule="Snap_Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kbh-3x-dVL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qjP-HP-GIk">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qjP-HP-GIk" id="zsF-ab-b3G">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="O3p-iE-8rh" id="Lo9-8Y-Iu0"/>
+                            <outlet property="delegate" destination="O3p-iE-8rh" id="BHU-UJ-zSq"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mom-WJ-Bj2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2719" y="-90"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2zT-Kq-5c2">
