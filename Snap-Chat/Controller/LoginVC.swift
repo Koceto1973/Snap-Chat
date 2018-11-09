@@ -40,11 +40,18 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             if let password = passwordTextField.text {
                 if signupMode { // Sign Up
                     Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-                        if let error = error {
-                            self.presentAlert(alert: error.localizedDescription)
+                        if let err1 = error {
+                            self.presentAlert(alert: err1.localizedDescription)
                         } else {
-                            if let user = user {
-                               //Database.database().reference().child("users").child(user.uid).child("email").setValue(user.email)
+                            if let usr = user {
+                                // add newly sign up user to snap recepients database
+                                Database.database().reference().child("users").child(usr.user.uid).child("email").setValue(usr.user.email, withCompletionBlock: { (error, dbRef) in
+                                    if let err2 = error {
+                                        self.presentAlert(alert: err2.localizedDescription)
+                                    } else {
+                                        debugPrint("Adding new user to snaps recepients data base successful!")
+                                    }
+                                })
                             }
                             debugPrint("SignUp success!")
                             self.performSegue(withIdentifier: "moveToSnaps", sender: nil)

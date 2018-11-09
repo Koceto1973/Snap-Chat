@@ -80,18 +80,42 @@
 			isa = PBXGroup;
 			children = (
 				3500047B2194F83F00790B4D /* AppDelegate.swift */,
-				3500047D2194F83F00790B4D /* LoginVC.swift */,
-				359639F5219514530036C420 /* SnapsTableVC.swift */,
-				359639F721952D9B0036C420 /* SelectPictureVC.swift */,
-				35AB41CB2195C0F6005C66D6 /* SelectRecipientTableVC.swift */,
-				35AB41CD2195C129005C66D6 /* ViewSnapVC.swift */,
 				3500047F2194F83F00790B4D /* Main.storyboard */,
+				35AB41D121964E63005C66D6 /* Model */,
+				35AB41D221964E73005C66D6 /* View */,
+				35AB41D321964E8D005C66D6 /* Controller */,
 				350004822194F84000790B4D /* Assets.xcassets */,
 				350004842194F84000790B4D /* LaunchScreen.storyboard */,
 				350004872194F84000790B4D /* Info.plist */,
 				35AB41CF2195E5F9005C66D6 /* GoogleService-Info.plist */,
 			);
 			path = "Snap-Chat";
+			sourceTree = "<group>";
+		};
+		35AB41D121964E63005C66D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		35AB41D221964E73005C66D6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35AB41D321964E8D005C66D6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3500047D2194F83F00790B4D /* LoginVC.swift */,
+				359639F5219514530036C420 /* SnapsTableVC.swift */,
+				359639F721952D9B0036C420 /* SelectPictureVC.swift */,
+				35AB41CB2195C0F6005C66D6 /* SelectRecipientTableVC.swift */,
+				35AB41CD2195C129005C66D6 /* ViewSnapVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		58AD1D97BA3F40669A66D766 /* Pods */ = {

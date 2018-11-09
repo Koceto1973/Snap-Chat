@@ -61,15 +61,15 @@ class SelectPictureVC: UIViewController, UITextFieldDelegate, UIImagePickerContr
                     if let imageData = UIImageJPEGRepresentation(image, 0.1) {
                         // actual upload
                         imagesFolder.child(imageName).putData(imageData, metadata: nil) { (storageMetadata, error) in
-                            if let error1 = error {
-                                self.presentAlert(alert: error1.localizedDescription)
+                            if let err1 = error {
+                                self.presentAlert(alert: err1.localizedDescription)
                             } else {
                                 debugPrint("Image upload success!")
                                 // providing the downloadURL to prepare for segue function
                                 // check for names duplication ....
-                                imagesFolder.child(self.imageName).downloadURL(completion: { (url, err) in
-                                    if let error2 = error {
-                                        self.presentAlert(alert: error2.localizedDescription)
+                                imagesFolder.child(self.imageName).downloadURL(completion: { (url, error) in
+                                    if let err2 = error {
+                                        self.presentAlert(alert: err2.localizedDescription)
                                     } else {
                                         self.performSegue(withIdentifier: "selectRecipientSegue", sender: url!.absoluteString)
                                     }
