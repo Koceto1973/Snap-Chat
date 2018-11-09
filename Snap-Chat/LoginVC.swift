@@ -47,7 +47,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                //Database.database().reference().child("users").child(user.uid).child("email").setValue(user.email)
                             }
                             debugPrint("SignUp success!")
-                            //self.performSegue(withIdentifier: "moveToSnaps", sender: nil)
+                            self.performSegue(withIdentifier: "moveToSnaps", sender: nil)
                         }
                     })
                 } else { // Log In
@@ -56,7 +56,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                             self.presentAlert(alert: error.localizedDescription)
                         } else {
                             debugPrint("LogIn success!")
-                            //self.performSegue(withIdentifier: "moveToSnaps", sender: nil)
+                            self.performSegue(withIdentifier: "moveToSnaps", sender: nil)
                         }
                     })
                 }
