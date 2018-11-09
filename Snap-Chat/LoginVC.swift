@@ -10,42 +10,53 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class LoginViewController: UIViewController {
+class LoginVC: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var topButton: UIButton!
-    @IBOutlet weak var bottomButton: UIButton!
-    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var goInSwitch: UISwitch!
+    @IBOutlet weak var logInLabel: UILabel!
+    @IBOutlet weak var signUpLabel: UILabel!
     
-    var signupMode = false
+    var signupMode: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        logInLabel.layer.borderColor = UIColor.brown.cgColor
+        signUpLabel.layer.borderColor = UIColor.brown.cgColor
+        logInLabel.layer.borderWidth = 0.0
+        signUpLabel.layer.borderWidth = 2.0
+        
+        // keyboard return
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
-    @IBAction func topTapped(_ sender: Any) {
+    // sign up / log in
+    @IBAction func goInPressed(_ sender: Any) {
         if let email = emailTextField.text {
             if let password = passwordTextField.text {
-                if signupMode {
-                    // Sign Up
-                    FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
+                if signupMode { // Sign Up
+                    Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                         if let error = error {
                             self.presentAlert(alert: error.localizedDescription)
                         } else {
                             if let user = user {
-                                FIRDatabase.database().reference().child("users").child(user.uid).child("email").setValue(user.email)
-                                self.performSegue(withIdentifier: "moveToSnaps", sender: nil)
+                               //Database.database().reference().child("users").child(user.uid).child("email").setValue(user.email)
                             }
+                            debugPrint("SignUp success!")
+                            //self.performSegue(withIdentifier: "moveToSnaps", sender: nil)
                         }
                     })
-                } else {
-                    // Log In
-                    FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+                } else { // Log In
+                    Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
                         if let error = error {
                             self.presentAlert(alert: error.localizedDescription)
                         } else {
-                            self.performSegue(withIdentifier: "moveToSnaps", sender: nil)
+                            debugPrint("LogIn success!")
+                            //self.performSegue(withIdentifier: "moveToSnaps", sender: nil)
                         }
                     })
                 }
@@ -53,6 +64,19 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func goInSwitchClicked(_ sender: Any) {
+        if goInSwitch.isOn {
+            signupMode = true
+            signUpLabel.layer.borderWidth = 2.0
+            logInLabel.layer.borderWidth = 0.0
+        } else {
+            signupMode = false
+            signUpLabel.layer.borderWidth = 0.0
+            logInLabel.layer.borderWidth = 2.0
+        }
+    }
+    
+    // sign up / log in alert messaging
     func presentAlert(alert:String) {
         let alertVC = UIAlertController(title: "Error", message: alert, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
@@ -62,20 +86,14 @@ class LoginViewController: UIViewController {
         present(alertVC, animated: true, completion: nil)
     }
     
-    @IBAction func bottomTapped(_ sender: Any) {
-        if signupMode {
-            // Switch to Log In
-            signupMode = false
-            topButton.setTitle("Log In", for: .normal)
-            bottomButton.setTitle("Switch to Sign Up", for: .normal)
-        } else {
-            // Switch to Sign Up
-            signupMode = true
-            topButton.setTitle("Sign Up", for: .normal)
-            bottomButton.setTitle("Switch to Log In", for: .normal)
-        }
+    // text fields keybord management
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
-    
+    func textFieldShouldReturn(_ textField:UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 
