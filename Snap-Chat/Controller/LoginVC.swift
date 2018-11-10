@@ -21,6 +21,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     var signupMode: Bool = true
     
+    // ui setup
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -46,17 +47,14 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         if let err1 = error {
                             self.present(Show.Alert(with: err1.localizedDescription), animated: true, completion: nil)
                         } else {
+                            // add newly sign up user to snap recepients database
                             if let usr = user {
-                                // add newly sign up user to snap recepients database
                                 Database.database().reference().child("users").child(usr.user.uid).child("email").setValue(usr.user.email, withCompletionBlock: { (error, dbRef) in
                                     if let err2 = error {
                                         self.present(Show.Alert(with: err2.localizedDescription), animated: true, completion: nil)
-                                    } else {
-                                        debugPrint("Adding new user to snaps recepients data base successful!")
                                     }
                                 })
                             }
-                            debugPrint("SignUp success!")
                             self.performSegue(withIdentifier: "moveToSnaps", sender: nil)
                         }
                     })
@@ -65,7 +63,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         if let err = error {
                             self.present(Show.Alert(with: err.localizedDescription), animated: true, completion: nil)
                         } else {
-                            debugPrint("LogIn success!")
                             self.performSegue(withIdentifier: "moveToSnaps", sender: nil)
                         }
                     })
@@ -74,6 +71,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // switching log in / sign up modes
     @IBAction func goInSwitchClicked(_ sender: Any) {
         if goInSwitch.isOn {
             signupMode = true

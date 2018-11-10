@@ -65,9 +65,7 @@ class SelectPictureVC: UIViewController, UITextFieldDelegate, UIImagePickerContr
                             if let err1 = error {
                                 self.present(Show.Alert(with: err1.localizedDescription), animated: true, completion: nil)
                             } else {
-                                debugPrint("Image upload success!")
                                 // providing the downloadURL to prepare for segue function
-                                // check for names duplication ....
                                 imagesFolder.child(self.imageName).downloadURL(completion: { (url, error) in
                                     if let err2 = error {
                                         self.present(Show.Alert(with: err2.localizedDescription), animated: true, completion: nil)

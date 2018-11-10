@@ -25,7 +25,7 @@ class SelectRecipientTableVC: UITableViewController {
     // snaps recepients db buildup
     override func viewDidLoad() {
         super.viewDidLoad()
-        debugPrint("Snap prepared for recepient: \(snapDescription), \(downloadURL)")
+        
         // adding records to snaps recepients db via listener, current user omitted
         Database.database().reference().child("users").observe(.childAdded) { (snapshot) in
             let user = localUser()
@@ -40,7 +40,6 @@ class SelectRecipientTableVC: UITableViewController {
                             self.tableView.reloadData()
                         }
                     }
-                    debugPrint(user.email)
                 }
             }
         }
@@ -68,12 +67,8 @@ class SelectRecipientTableVC: UITableViewController {
             Database.database().reference().child("users").child(user.uid).child("snaps").childByAutoId().setValue(snap) { (error, dbRef) in
                 if let err = error {
                     self.present(Show.Alert(with: err.localizedDescription), animated: true, completion: nil)
-                } else {
-                    // snap uploaded
-                    debugPrint("Snap upload to db - success!")
                 }
-            }
-            
+            }            
             navigationController?.popToRootViewController(animated: true)
         }
     }    

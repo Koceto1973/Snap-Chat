@@ -100,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				35AB41D421964FD2005C66D6 /* Alerts.swift */,
-				35AB41D62196757C005C66D6 /* Button.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -108,6 +107,7 @@
 		35AB41D221964E73005C66D6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				35AB41D62196757C005C66D6 /* Button.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

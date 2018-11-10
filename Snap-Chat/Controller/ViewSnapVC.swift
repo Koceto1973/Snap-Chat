@@ -17,7 +17,7 @@ class ViewSnapVC: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
-    var imageName = ""
+    var imageName = ""  // needed for the deletion from the storage
     var snap : DataSnapshot?
     
     // snap presentation
@@ -31,6 +31,7 @@ class ViewSnapVC: UIViewController {
                     if let url = URL(string: imageURL) {
                         imageView.sd_setImage(with: url)
                     }
+                    // ready for the deletion from the storage
                     if let imageName = snapDictionary["imageName"] as? String {
                         self.imageName = imageName
                     }
