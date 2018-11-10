@@ -17,6 +17,7 @@
 		35AB41CC2195C0F6005C66D6 /* SelectRecipientTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AB41CB2195C0F6005C66D6 /* SelectRecipientTableVC.swift */; };
 		35AB41CE2195C129005C66D6 /* ViewSnapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AB41CD2195C129005C66D6 /* ViewSnapVC.swift */; };
 		35AB41D02195E5F9005C66D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35AB41CF2195E5F9005C66D6 /* GoogleService-Info.plist */; };
+		35AB41D521964FD2005C66D6 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AB41D421964FD2005C66D6 /* Alerts.swift */; };
 		A7A4086E969A922F9AF99099 /* Pods_Snap_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1A90E879C1D7D230541A93 /* Pods_Snap_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		35AB41CB2195C0F6005C66D6 /* SelectRecipientTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRecipientTableVC.swift; sourceTree = "<group>"; };
 		35AB41CD2195C129005C66D6 /* ViewSnapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSnapVC.swift; sourceTree = "<group>"; };
 		35AB41CF2195E5F9005C66D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		35AB41D421964FD2005C66D6 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		63EA7BCA76643EEE9C520E9A /* Pods-Snap-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snap-Chat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Snap-Chat/Pods-Snap-Chat.debug.xcconfig"; sourceTree = "<group>"; };
 		7C1A90E879C1D7D230541A93 /* Pods_Snap_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Snap_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB9B94E4A63D422F3F2518F /* Pods-Snap-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snap-Chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Snap-Chat/Pods-Snap-Chat.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		35AB41D121964E63005C66D6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				35AB41D421964FD2005C66D6 /* Alerts.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				35AB41CC2195C0F6005C66D6 /* SelectRecipientTableVC.swift in Sources */,
 				359639F6219514530036C420 /* SnapsTableVC.swift in Sources */,
 				3500047C2194F83F00790B4D /* AppDelegate.swift in Sources */,
+				35AB41D521964FD2005C66D6 /* Alerts.swift in Sources */,
 				35AB41CE2195C129005C66D6 /* ViewSnapVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

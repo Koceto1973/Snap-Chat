@@ -41,13 +41,13 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 if signupMode { // Sign Up
                     Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                         if let err1 = error {
-                            self.presentAlert(alert: err1.localizedDescription)
+                            self.present(Show.Alert(with: err1.localizedDescription), animated: true, completion: nil)
                         } else {
                             if let usr = user {
                                 // add newly sign up user to snap recepients database
                                 Database.database().reference().child("users").child(usr.user.uid).child("email").setValue(usr.user.email, withCompletionBlock: { (error, dbRef) in
                                     if let err2 = error {
-                                        self.presentAlert(alert: err2.localizedDescription)
+                                        self.present(Show.Alert(with: err2.localizedDescription), animated: true, completion: nil)
                                     } else {
                                         debugPrint("Adding new user to snaps recepients data base successful!")
                                     }
@@ -59,8 +59,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                     })
                 } else { // Log In
                     Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-                        if let error = error {
-                            self.presentAlert(alert: error.localizedDescription)
+                        if let err = error {
+                            self.present(Show.Alert(with: err.localizedDescription), animated: true, completion: nil)
                         } else {
                             debugPrint("LogIn success!")
                             self.performSegue(withIdentifier: "moveToSnaps", sender: nil)
@@ -81,16 +81,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             signUpLabel.layer.borderWidth = 0.0
             logInLabel.layer.borderWidth = 2.0
         }
-    }
-    
-    // sign up / log in alert messaging
-    func presentAlert(alert:String) {
-        let alertVC = UIAlertController(title: "Error", message: alert, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
-            alertVC.dismiss(animated: true, completion: nil)
-        }
-        alertVC.addAction(okAction)
-        present(alertVC, animated: true, completion: nil)
     }
     
     // text fields keybord management

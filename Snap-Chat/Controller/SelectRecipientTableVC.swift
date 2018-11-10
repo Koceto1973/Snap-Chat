@@ -63,7 +63,7 @@ class SelectRecipientTableVC: UITableViewController {
             // snap uploaded to db
             Database.database().reference().child("users").child(user.uid).child("snaps").childByAutoId().setValue(snap) { (error, dbRef) in
                 if let err = error {
-                    self.presentAlert(alert: err.localizedDescription)
+                    self.present(Show.Alert(with: err.localizedDescription), animated: true, completion: nil)
                 } else {
                     // snap uploaded
                     debugPrint("Snap upload to db - success!")
@@ -72,17 +72,7 @@ class SelectRecipientTableVC: UITableViewController {
             
             navigationController?.popToRootViewController(animated: true)
         }
-    }
-    
-    // message alerts
-    func presentAlert(alert:String) {
-        let alertVC = UIAlertController(title: "Error", message: alert, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
-            alertVC.dismiss(animated: true, completion: nil)
-        }
-        alertVC.addAction(okAction)
-        present(alertVC, animated: true, completion: nil)
-    }
+    }    
 }
 
 

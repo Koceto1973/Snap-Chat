@@ -62,14 +62,14 @@ class SelectPictureVC: UIViewController, UITextFieldDelegate, UIImagePickerContr
                         // actual upload
                         imagesFolder.child(imageName).putData(imageData, metadata: nil) { (storageMetadata, error) in
                             if let err1 = error {
-                                self.presentAlert(alert: err1.localizedDescription)
+                                self.present(Show.Alert(with: err1.localizedDescription), animated: true, completion: nil)
                             } else {
                                 debugPrint("Image upload success!")
                                 // providing the downloadURL to prepare for segue function
                                 // check for names duplication ....
                                 imagesFolder.child(self.imageName).downloadURL(completion: { (url, error) in
                                     if let err2 = error {
-                                        self.presentAlert(alert: err2.localizedDescription)
+                                        self.present(Show.Alert(with: err2.localizedDescription), animated: true, completion: nil)
                                     } else {
                                         self.performSegue(withIdentifier: "selectRecipientSegue", sender: url!.absoluteString)
                                     }
@@ -80,7 +80,7 @@ class SelectPictureVC: UIViewController, UITextFieldDelegate, UIImagePickerContr
                 }
             } else {
                 // We are missing something
-                presentAlert(alert: "You must provide an image and a message for your snap.")
+                self.present(Show.Alert(with: "You must provide an image and a message for your snap."), animated: true, completion: nil)
             }
         }
     }
@@ -93,16 +93,6 @@ class SelectPictureVC: UIViewController, UITextFieldDelegate, UIImagePickerContr
                 selectVC.imageName = imageName
             }
         }
-    }
-    
-    // message alerts
-    func presentAlert(alert:String) {
-        let alertVC = UIAlertController(title: "Error", message: alert, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
-            alertVC.dismiss(animated: true, completion: nil)
-        }
-        alertVC.addAction(okAction)
-        present(alertVC, animated: true, completion: nil)
     }
     
     // text fields keybord management
