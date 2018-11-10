@@ -26,16 +26,20 @@ class SelectRecipientTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         debugPrint("Snap prepared for recepient: \(snapDescription), \(downloadURL)")
-        // adding records to snaps recepients db via listener
+        // adding records to snaps recepients db via listener, current user omitted
         Database.database().reference().child("users").observe(.childAdded) { (snapshot) in
             let user = localUser()
             if let userDictionary = snapshot.value as? NSDictionary {
                 if let email = userDictionary["email"] as? String {
                     user.email = email
                     user.uid = snapshot.key
-                    self.users.append(user)
-                    self.tableView.reloadData()
-                    
+                    // add all,except current user
+                    if let currentUserEmail = Auth.auth().currentUser?.email {
+                        if currentUserEmail != user.email {
+                            self.users.append(user)
+                            self.tableView.reloadData()
+                        }
+                    }
                     debugPrint(user.email)
                 }
             }
