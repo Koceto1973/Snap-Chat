@@ -17,6 +17,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var goInSwitch: UISwitch!
     @IBOutlet weak var logInLabel: UILabel!
     @IBOutlet weak var signUpLabel: UILabel!
+    @IBOutlet weak var goInButton: uiButton!
     
     var signupMode: Bool = true
     
@@ -27,7 +28,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         logInLabel.layer.borderColor = UIColor.brown.cgColor
         signUpLabel.layer.borderColor = UIColor.brown.cgColor
         logInLabel.layer.borderWidth = 0.0
+        logInLabel.layer.cornerRadius = 10
         signUpLabel.layer.borderWidth = 2.0
+        signUpLabel.layer.cornerRadius = 10
         
         // keyboard return
         emailTextField.delegate = self

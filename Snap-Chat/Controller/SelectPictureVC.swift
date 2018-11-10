@@ -13,6 +13,7 @@ class SelectPictureVC: UIViewController, UITextFieldDelegate, UIImagePickerContr
     
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var choosseRecipientButton: uiButton!
     
     var imagePicker : UIImagePickerController?
     var imageAdded = false

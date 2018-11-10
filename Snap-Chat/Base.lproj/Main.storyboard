@@ -39,13 +39,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8Z-cV-Apx">
-                                <rect key="frame" x="167" y="255" width="40" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8Z-cV-Apx" customClass="uiButton" customModule="Snap_Chat" customModuleProvider="target">
+                                <rect key="frame" x="161" y="255" width="52" height="30"/>
                                 <color key="backgroundColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="T4O-Hc-yTp"/>
+                                    <constraint firstAttribute="width" constant="52" id="T4O-Hc-yTp"/>
                                 </constraints>
-                                <state key="normal" title="Go In">
+                                <state key="normal" title="  Go In  ">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -58,14 +58,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWm-B0-zbo">
-                                <rect key="frame" x="80" y="340" width="47" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Log In  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWm-B0-zbo">
+                                <rect key="frame" x="80" y="340" width="64.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ui-7B-CXK">
-                                <rect key="frame" x="234" y="340" width="61" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Sign Up  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ui-7B-CXK">
+                                <rect key="frame" x="216.5" y="340" width="78.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -102,6 +102,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="Q6P-KR-7Gk" id="C9P-AE-92k"/>
+                        <outlet property="goInButton" destination="j8Z-cV-Apx" id="PCy-tq-qEU"/>
                         <outlet property="goInSwitch" destination="3fr-SX-ZPc" id="rff-9H-uNf"/>
                         <outlet property="logInLabel" destination="sWm-B0-zbo" id="eqC-y3-vxs"/>
                         <outlet property="passwordTextField" destination="zhv-f7-sNq" id="xYm-XQ-BZI"/>
@@ -178,7 +179,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IN6-EO-XYO">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IN6-EO-XYO" customClass="uiButton" customModule="Snap_Chat" customModuleProvider="target">
                                 <rect key="frame" x="117" y="369" width="140" height="30"/>
                                 <color key="backgroundColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -220,6 +221,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="choosseRecipientButton" destination="IN6-EO-XYO" id="JNA-nl-XJL"/>
                         <outlet property="imageView" destination="XGd-LT-4cm" id="sH0-eO-0bn"/>
                         <outlet property="messageTextField" destination="7vj-dc-jnt" id="PUh-Jk-Ojh"/>
                         <segue destination="O3p-iE-8rh" kind="show" identifier="selectRecipientSegue" id="UFf-WV-lgB"/>
