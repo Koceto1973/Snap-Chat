@@ -20,6 +20,7 @@ class ViewSnapVC: UIViewController {
     var imageName = ""
     var snap : DataSnapshot?
     
+    // snap presentation
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,9 +28,7 @@ class ViewSnapVC: UIViewController {
             if let description = snapDictionary["description"] as? String {
                 if let imageURL = snapDictionary["imageURL"] as? String {
                     messageLabel.text = description
-                    
                     if let url = URL(string: imageURL) {
-                        
                         imageView.sd_setImage(with: url)
                     }
                     if let imageName = snapDictionary["imageName"] as? String {
@@ -40,18 +39,23 @@ class ViewSnapVC: UIViewController {
         }
     }
     
+    // snap removed from db on exiting the view controller
     override func viewWillDisappear(_ animated: Bool) {
         if let currentUserUid = Auth.auth().currentUser?.uid {
-            
             if let key = snap?.key {
-                Database.database().reference().child("users").child(currentUserUid).child("snaps").child(key).removeValue()
-                
-                Storage.storage().reference().child("images").child(imageName).delete(completion: nil)
+                // remove snap from db
+                Database.database().reference().child("users").child(currentUserUid).child("snaps").child(key).removeValue { (error, dbRef) in
+                    if let err = error {
+                        self.present(Show.Alert(with: err.localizedDescription), animated: true, completion: nil)
+                    } 
+                }
+                // remove snap image from storage
+                Storage.storage().reference().child("images").child(imageName).delete { (error) in
+                    if let err = error {
+                        self.present(Show.Alert(with: err.localizedDescription), animated: true, completion: nil)
+                    }
+                }
             }
-            
         }
-        
-        
     }
-    
 }

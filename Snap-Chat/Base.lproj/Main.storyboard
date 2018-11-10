@@ -149,6 +149,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Qhl-Nc-0QV" kind="show" identifier="viewSnapSegue" id="220-Gz-vuI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwj-p6-Xvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -233,9 +236,49 @@
                     <view key="view" contentMode="scaleToFill" id="sbt-CV-jDw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VAQ-uU-Zse">
+                                <rect key="frame" x="0.0" y="124" width="375" height="503"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="VAQ-uU-Zse" secondAttribute="height" multiplier="15:10" id="ipu-8t-Nq8"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ipu-8t-Nq8"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqw-kP-40i">
+                                <rect key="frame" x="20" y="647" width="335" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Snap!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUd-Bq-JB8">
+                                <rect key="frame" x="124" y="84" width="127" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tUd-Bq-JB8" firstAttribute="top" secondItem="sAd-79-O4u" secondAttribute="top" constant="20" id="8XZ-pN-9NK"/>
+                            <constraint firstItem="cqw-kP-40i" firstAttribute="top" secondItem="VAQ-uU-Zse" secondAttribute="bottom" constant="20" id="8rX-jh-hIn"/>
+                            <constraint firstItem="cqw-kP-40i" firstAttribute="leading" secondItem="sAd-79-O4u" secondAttribute="leading" constant="20" id="FR7-cY-VAj"/>
+                            <constraint firstItem="tUd-Bq-JB8" firstAttribute="centerX" secondItem="sbt-CV-jDw" secondAttribute="centerX" id="OgU-V6-kWG"/>
+                            <constraint firstItem="sAd-79-O4u" firstAttribute="trailing" secondItem="cqw-kP-40i" secondAttribute="trailing" constant="20" id="bwO-pA-TpZ"/>
+                            <constraint firstItem="VAQ-uU-Zse" firstAttribute="leading" secondItem="sAd-79-O4u" secondAttribute="leading" id="dKZ-AB-TXz"/>
+                            <constraint firstItem="sAd-79-O4u" firstAttribute="bottom" secondItem="cqw-kP-40i" secondAttribute="bottom" constant="20" id="iTQ-wa-BKd"/>
+                            <constraint firstItem="VAQ-uU-Zse" firstAttribute="top" secondItem="sAd-79-O4u" secondAttribute="top" constant="60" id="jJU-Cd-pFB"/>
+                            <constraint firstItem="sAd-79-O4u" firstAttribute="trailing" secondItem="VAQ-uU-Zse" secondAttribute="trailing" id="wfk-vt-bVY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="sAd-79-O4u"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="VAQ-uU-Zse" id="N5i-4q-ohg"/>
+                        <outlet property="messageLabel" destination="cqw-kP-40i" id="a1M-Sf-SIM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N2y-dO-fMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
